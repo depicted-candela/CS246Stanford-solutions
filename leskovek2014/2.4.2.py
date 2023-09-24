@@ -43,10 +43,6 @@ plt.figure(figsize=(8, 6))  # Optional: Set the figure size
 # Loop through unique categories and create scatter plots for each category
 for (cat1, cat2), group in df.groupby(['steps', 'p']):
     plt.plot(group['hi'], group['tt'], label=f'{cat1}, {cat2}')
-    # plt.plot(group['ht'].iloc[0],
-    #          tt(group["steps"].iloc[0], t, group["ht"].iloc[0], p, c),
-    #          marker='o',
-    #          color='red')
     plt.plot(group[group['tt'] == min(group['tt'])]['hi'].iloc[0],
             group[group['tt'] == min(group['tt'])]['tt'].iloc[0],
             marker='X',
@@ -60,7 +56,7 @@ for (cat1, cat2), group in df.groupby(['steps', 'p']):
 # Add labels and legend
 plt.xlabel('hi')
 plt.ylabel('tt')
-plt.title('Scatter Plot Categorized by SuperSteps Variable')
+plt.title('Scatter Plot Categorized by SuperSteps and Probability variables')
 plt.legend(title='Category')
 
 # Show the plot
